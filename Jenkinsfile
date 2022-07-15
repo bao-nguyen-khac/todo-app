@@ -5,7 +5,6 @@ pipeline {
             args '-p 3000:3000' 
         }
     }
-    agent any
     stages {
         stage('Build') { 
             steps {

@@ -1,14 +1,10 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:16-alpine' 
-            args '-p 3000:3000' 
-        }
-    }
+    agent any
+    tools {nodejs "NodeJS" }
     stages {
         stage('Build') { 
             steps {
-                sh 'npm install' 
+                sh 'npm install --omit=dev' 
             }
         }
         stage('Test') {

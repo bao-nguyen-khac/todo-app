@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "node src/index.js",
     "prettify": "prettier -l --write \"**/*.js\"",
-    "test": "jest",
+    "test": "echo \"No error\"",
     "dev": "nodemon src/index.js"
   },
   "dependencies": {

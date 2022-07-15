@@ -1,0 +1,37 @@
+version: '3.7'
+
+secrets:
+  todo-app-MYSQL_PASSWORD:
+    external: true
+
+volumes:
+  db-data-1:
+
+services:
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - db-data-1:/var/lib/mysql
+    secrets:
+      - source: todo-app-MYSQL_PASSWORD
+        target: MYSQLDB_ROOT_PASSWORD
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: '/run/secrets/MYSQLDB_ROOT_PASSWORD'
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: '/run/secrets/MYSQLDB_ROOT_PASSWORD'
+    deploy:
+      replicas: 1
+  app:
+    image: khacbaocsek19/todo-app:latest
+    ports:
+      - 3333:3000
+    environment:
+      MYSQL_HOST: 'mysql'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: '/run/secrets/MYSQLDB_ROOT_PASSWORD'
+      MYSQL_DB: 'db'
+    depends_on:
+      - mysql
+    deploy:
+      replicas: 1

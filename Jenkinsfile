@@ -28,6 +28,7 @@ pipeline {
         stage('Ssh k8s-master'){
             steps{
                 sshagent(['ssh-k8s-master']) {
+                    // some block
                     sh 'ssh -o StrictHostKeyChecking=no -p 9922 -l ubuntu 61.28.232.236 kubectl set image deployment/todo-app-backend todo-app-backend=khacbaocsek19/todo-app:v1'
                 }
             }

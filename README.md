@@ -1,3 +1,5 @@
+# Simple todo app with K8s cluster, Docker swarm and Jenkins
+
 ---------- With docker compose ----------
 ```bash
 touch .env

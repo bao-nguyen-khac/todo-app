@@ -1,7 +1,7 @@
 On Kubernetes cluster
 ```bash
 cd k8s/
-kubectl apply -f secret-volume.yml
-kubectl apply -f db.yml
-kubectl apply -f backend.yml
+kubectl apply -f secret-volume.yaml
+kubectl apply -f db.yaml
+kubectl apply -f backend.yaml
 ```

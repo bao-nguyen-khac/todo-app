@@ -12,7 +12,7 @@ services:
   todo-app:
     depends_on:
       - mysqldb
-    image: get-start:v1
+    image: khacbaocsek19/todo-app:latest
     environment:
       - MYSQL_HOST=mysqldb
       - MYSQL_USER=$MYSQLDB_USER

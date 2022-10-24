@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git clone 'https://github.com/bao-nguyen-khac/todo-app.git'
+                git 'https://github.com/bao-nguyen-khac/todo-app.git'
             }
         }
         // stage('Build') { 

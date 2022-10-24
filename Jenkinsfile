@@ -1,22 +1,18 @@
 pipeline {
     agent any
-    // tools {nodejs "NodeJS" }
+    tools {nodejs "NodeJS" }
     stages {
-        stage('Clone') {
+        
+        stage('Build') { 
             steps {
-                git 'https://github.com/bao-nguyen-khac/todo-app.git'
+                sh 'npm install --production' 
             }
         }
-        // stage('Build') { 
-        //     steps {
-        //         sh 'npm install --omit=dev' 
-        //     }
-        // }
-        // stage('Test') {
-        //     steps {
-        //         sh 'npm test'
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
         // stage('Push image'){
         //     steps {
         //         withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {

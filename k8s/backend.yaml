@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: todo-app-backend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: todo-app-backend
@@ -38,12 +38,29 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: todo-app-port
+  name: todo-app-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: todo-app-backend
   ports:
   - port: 3000
     targetPort: 3000
-    nodePort: 30003
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: todo-app-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: todo-app.baonk.site
+    http:
+      paths:
+      - backend:
+          service:
+            name: todo-app-service
+            port:
+              number: 3000
+        path: /
+        pathType: Prefix

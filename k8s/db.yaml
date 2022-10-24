@@ -16,7 +16,7 @@ spec:
         image: mysql:5.7
         resources:
           limits:
-            memory: "500Mi"
+            memory: "300Mi"
             cpu: "100m"
         env:
         - name: MYSQL_USER

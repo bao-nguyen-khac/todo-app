@@ -31,4 +31,4 @@ kubectl apply -f db.yaml
 kubectl apply -f backend.yaml
 ```
 
-### Demo: todo-app.baonk.site
+### Demo: https://todo-app.baonk.site/

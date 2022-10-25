@@ -30,6 +30,6 @@ kubectl apply -f secret-volume.yaml
 kubectl apply -f db.yaml
 kubectl apply -f backend.yaml
 ```
-### How I deployment it
+### How I deploy it
 * <a href="https://github.com/bao-nguyen-khac/devops-setup.git" target="_blank">Reference</a>
 ### Link demo: <a href="https://todo-app.baonk.site" target="_blank">Todo app</a>

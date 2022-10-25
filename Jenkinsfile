@@ -5,7 +5,7 @@ pipeline {
         
         stage('Build') { 
             steps {
-                sh 'npm install --production' 
+                sh 'npm install --omit=dev' 
             }
         }
         stage('Test') {
@@ -13,15 +13,14 @@ pipeline {
                 sh 'npm test'
             }
         }
-        // stage('Push image'){
-        //     steps {
-        //         withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
-        //             // some block
-        //             sh 'docker build -t khacbaocsek19/todo-app:v2 .'
-        //             sh 'docker push khacbaocsek19/todo-app:v2'
-        //         }
-        //     }
-        // }
+        stage('Build and push docker image'){
+            steps {
+                withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
+                    sh 'docker build -t khacbaocsek19/todo-app:v3 .'
+                    sh 'docker push khacbaocsek19/todo-app:v3'
+                }
+            }
+        }
         // stage('Ssh k8s-master'){
         //     steps{
         //         sshagent(['ssh-k8s-master']) {
